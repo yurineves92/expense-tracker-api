@@ -58,14 +58,7 @@ class AuthController extends Controller
     public function userInfo()
     {
         $user = User::all();
-        return response()->json(
-            [
-                "data" => [
-                    "data" => $user,
-                ],
-            ],
-            200
-        );
+        return response()->json(["data" => $user], 200);
     }
 
     public function update(Request $request, $id)
