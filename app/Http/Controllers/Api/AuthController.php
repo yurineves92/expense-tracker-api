@@ -16,12 +16,12 @@ class AuthController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:8',
         ]);
-
         $user = User::create([
             "name" => $request->name,
             "email" => $request->email,
             "password" => bcrypt($request->password),
         ]);
+
 
         $token = $user->createToken("expense-tracker-api")->accessToken;
 
@@ -49,7 +49,7 @@ class AuthController extends Controller
         if (Auth::attempt($data)) {
             $user = Auth::user();
             $token = $user->createToken("expense-tracker-api")->accessToken;
-            return response()->json(["token" => $token], 200);
+            return response()->json(["user" => $user, "token" => $token], 200);
         } else {
             return response()->json(["error" => "Unauthorized."], 401);
         }
