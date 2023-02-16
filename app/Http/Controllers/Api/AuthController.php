@@ -54,39 +54,4 @@ class AuthController extends Controller
             return response()->json(["error" => "Unauthorized."], 401);
         }
     }
-
-    public function userInfo()
-    {
-        $user = User::all();
-        return response()->json(["data" => $user], 200);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->save();
-        return response()->json(
-            [
-                "data" => [
-                    "message" => "Information updated successfully.",
-                    "data" => $user,
-                ],
-            ],
-            200
-        );
-    }
-    public function delete(Request $request, $id)
-    {
-        $user = User::find($id);
-        $user->delete();
-        return response()->json(
-            [
-                "data" => [
-                    "message" => "Record deleted successfully.",
-                ],
-            ],
-            200
-        );
-    }
 }
