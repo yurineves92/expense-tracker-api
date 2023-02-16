@@ -83,4 +83,18 @@ class CategoryController extends Controller
             201
         );
     }
+
+    public function destroy($id)
+    {
+        Category::findOrFail($id)->delete();
+        
+        return response()->json(
+            [
+                "data" => [
+                    "message" => 'Category removed successfully.'
+                ]
+            ],
+            200
+        );
+    }
 }
