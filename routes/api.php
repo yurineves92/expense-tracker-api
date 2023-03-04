@@ -37,6 +37,7 @@ Route::middleware('auth:api')->group(callback: function () {
 
    // Transactions
    Route::get('transactions', [TransactionController::class, 'index'])->name('transaction.index');
+   Route::get('transaction/myBalance', [TransactionController::class, 'balance'])->name('transaction.balance');
    Route::post('transactions', [TransactionController::class, 'store'])->name('transaction.store');
    Route::get('transactions/{id}', [TransactionController::class, 'show'])->name('transaction.show');
    Route::put('transactions/{id}', [TransactionController::class, 'update'])->name('transaction.update');

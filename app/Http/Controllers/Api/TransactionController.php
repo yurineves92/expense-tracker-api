@@ -23,6 +23,11 @@ class TransactionController extends Controller
         );
     }
 
+    public function balance(Request $request)
+    {
+
+    }
+
     public function show($id)
     {
         return response()->json(
